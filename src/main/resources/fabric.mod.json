@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "game-of-life-player",
+	"version": "${version}",
+	"name": "Game of Life Player",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/game-of-life-player/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.cyberneel.gameoflifeplayer.GameOfLifePlayer"
+		],
+		"fabric-datagen": [
+			"com.cyberneel.gameoflifeplayer.GameOfLifePlayerDataGenerator"
+		]
+	},
+	"mixins": [
+		"game-of-life-player.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.20.3",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
