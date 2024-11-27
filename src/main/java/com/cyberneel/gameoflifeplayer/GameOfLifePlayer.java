@@ -3,14 +3,13 @@ package com.cyberneel.gameoflifeplayer;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +27,16 @@ public class GameOfLifePlayer implements ModInitializer {
 
 	// Define the simulator block
 	public static final Block SIMULATOR_BLOCK = new SimulatorBlock(FabricBlockSettings.create().strength(200.0f));
+
+	private static BlockPos currentGridOrigin = null; // Tracks the origin of the existing grid
+
+	public static void setCurrentGridOrigin(BlockPos origin) {
+		currentGridOrigin = origin;
+	}
+
+	public static BlockPos getCurrentGridOrigin() {
+		return currentGridOrigin;
+	}
 
 	@Override
 	public void onInitialize() {
@@ -48,5 +57,8 @@ public class GameOfLifePlayer implements ModInitializer {
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "simulator_block"),
 				new BlockItem(SIMULATOR_BLOCK, new Item.Settings()));
 		System.out.println("Simulator block registered!");
+
+		// Register Commands
+		GameOfLifeCommands.RegisterCommands();
 	}
 }
