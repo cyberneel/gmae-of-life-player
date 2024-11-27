@@ -2,6 +2,15 @@ package com.cyberneel.gameoflifeplayer;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +23,12 @@ public class GameOfLifePlayer implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	// Define the grid block
+	public static final Block GRID_BLOCK = new Block(FabricBlockSettings.create().strength(1.0f));
+
+	// Define the simulator block
+	public static final Block SIMULATOR_BLOCK = new SimulatorBlock(FabricBlockSettings.create().strength(200.0f));
+
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -21,5 +36,17 @@ public class GameOfLifePlayer implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
+
+		// Register the Grid Block
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "grid_block"), GRID_BLOCK);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "grid_block"),
+				new BlockItem(GRID_BLOCK, new Item.Settings()));
+		LOGGER.info("Grid Block registered");
+
+		// Register the simulator block
+		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "simulator_block"), SIMULATOR_BLOCK);
+		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "simulator_block"),
+				new BlockItem(SIMULATOR_BLOCK, new Item.Settings()));
+		System.out.println("Simulator block registered!");
 	}
 }
