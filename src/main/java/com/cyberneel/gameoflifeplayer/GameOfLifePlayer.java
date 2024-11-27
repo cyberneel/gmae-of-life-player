@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class GameOfLifePlayer implements ModInitializer {
+	// We do this because it is going to be referenced throughout the project
 	public static final String MOD_ID = "game-of-life-player";
 
 	// This logger is used to write text to the console and the log file.

@@ -3,20 +3,23 @@
 	"id": "game-of-life-player",
 	"version": "${version}",
 	"name": "Game of Life Player",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This is a mod that lets you play Conway's \"Game of Life\" in Minecraft!",
 	"authors": [
 		"Me!"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/cyberneel/gmae-of-life-player"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/game-of-life-player/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"com.cyberneel.gameoflifeplayer.GameOfLifePlayer"
+		],
+		"client": [
+			"com.cyberneel.gameoflifeplayer.GameOfLifePlayerClient"
 		],
 		"fabric-datagen": [
 			"com.cyberneel.gameoflifeplayer.GameOfLifePlayerDataGenerator"
