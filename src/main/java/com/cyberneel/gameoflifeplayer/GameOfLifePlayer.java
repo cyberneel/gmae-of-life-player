@@ -8,6 +8,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ public class GameOfLifePlayer implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	// Define the grid block
-	public static final Block GRID_BLOCK = new Block(FabricBlockSettings.create().strength(1.0f));
+	public static final Block GRID_BLOCK = new GridBlock(FabricBlockSettings.create().strength(200.0f));
 
 	// Define the simulator block
 	public static final Block SIMULATOR_BLOCK = new SimulatorBlock(FabricBlockSettings.create().strength(200.0f));

@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "color=red": { "model": "game-of-life-player:block/grid_block_red" },
+    "color=black": { "model": "game-of-life-player:block/grid_block_black" }
+  }
+}

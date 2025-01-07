@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "game-of-life-player:block/grid_block_red"
+  }
+}
