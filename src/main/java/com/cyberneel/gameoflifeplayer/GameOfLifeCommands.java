@@ -25,9 +25,9 @@ public class GameOfLifeCommands {
                         // Clear the existing grid if it exists
                         if (GameOfLifePlayer.getCurrentGridOrigin() != null) {
                             clearGrid(world, GameOfLifePlayer.getCurrentGridOrigin());
-                        } else { // Clear all the other Grid blocks
-                            clearAllGridBlocks(world);
-                        }
+                        } // else { // Clear all the other Grid blocks
+                            // clearAllGridBlocks(world);
+                        // }
 
                         // Spawn the new grid
                         spawnGrid(world, gridOrigin);
