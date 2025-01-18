@@ -15,13 +15,12 @@ This will create a gray grid nearby for you to interact with. Breaking a block r
 
 Once you are ready and want to see how your grid evolves, run the following command:
 ```
-/simulate_gol_step
+/simulate_gol_step [steps count]
 ```
-This will simulate the grid by one step, you can keep running this command to see more evolution steps, or modify the grid before another simulation step.
+This will simulate the grid by the specified steps, you can keep running this command to see more evolution steps, or modify the grid before another simulation step. You can also right-click the magenta block to quickly simulate a step.
 
 # What's Next?
 I plan on adding more features and making the experience better as I learn more about MC modding. Some things I have planned are:
-- Simulate multiple steps at once
 - Better colors and textures
 - Reverse simulation
 - A control block for settings
