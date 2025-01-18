@@ -1,5 +1,6 @@
 package com.cyberneel.gameoflifeplayer;
 
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -44,7 +45,9 @@ public class GameOfLifeCommands {
         // Simulate Step Command
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("simulate_gol_step")
+                    .then(CommandManager.argument("steps", IntegerArgumentType.integer())
                     .executes(context -> {
+                        int steps = IntegerArgumentType.getInteger(context, "steps");
                         ServerWorld world = context.getSource().getWorld();
 
                         // Check if the grid exists
@@ -54,11 +57,13 @@ public class GameOfLifeCommands {
 
                         BlockPos gridOrigin = GameOfLifePlayer.getCurrentGridOrigin();
 
-                        simulateStep(world, gridOrigin);
+                        for (int i = 0; i < steps; i++) {
+                            simulateStep(world, gridOrigin);
+                        }
 
                         return 1;
                     })
-            );
+            ));
         });
     }
 
@@ -83,6 +88,9 @@ public class GameOfLifeCommands {
                 world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
             }
         }
+        // Remove simulator block
+        BlockPos blockPos =  origin.add(2, 0, -1);
+        world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
     }
 
     // Spawns a new grid at the specified origin
@@ -93,6 +101,9 @@ public class GameOfLifeCommands {
                 world.setBlockState(blockPos, GameOfLifePlayer.GRID_BLOCK.getDefaultState()); // Example block
             }
         }
+        // Spawn a simulator block
+        BlockPos blockPos =  origin.add(2, 0, -1);
+        world.setBlockState(blockPos, GameOfLifePlayer.SIMULATOR_BLOCK.getDefaultState());
     }
 
     // Runs the simulation step

@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.vehicle.CommandBlockMinecartEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -23,6 +24,7 @@ public class SimulatorBlock extends Block {
             // Simulate the next step
             GameOfLifePlayer.LOGGER.info("Simulator Block Clicked");
             SimulateNextStep((ServerWorld) world, pos);
+            player.getServer().getCommandManager().executeWithPrefix(player.getServer().getCommandSource(), "simulate_gol_step 1");
         }
         return ActionResult.SUCCESS;
     }

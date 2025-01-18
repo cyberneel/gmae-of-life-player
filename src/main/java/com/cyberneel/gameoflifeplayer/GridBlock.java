@@ -51,7 +51,7 @@ public class GridBlock extends Block {
         // Break surrounding grid blocks and trigger cascading effect
         BlockPos.stream(pos.add(-1, 0, -1), pos.add(1, 0, 1)).forEach(blockPos -> {
             BlockState blockState = world.getBlockState(blockPos);
-            if (blockState.isOf(this)) { // Check if the block is the same type
+            if (blockState.isOf(this) || blockState.isOf(GameOfLifePlayer.SIMULATOR_BLOCK)) { // Check if the block is the same type
                 world.breakBlock(blockPos, false);
                 // Trigger onBroken manually for the surrounding block
                 blockState.getBlock().onBroken(world, blockPos, blockState);
